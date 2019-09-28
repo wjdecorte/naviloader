@@ -8,12 +8,36 @@ authors = ["Jason DeCorte <jdecorte@decorteindustries.com>"]
 python = "^3.7"
 click = "^7.0"
 pyspark = "^2.4"
+python-dateutil = "^2.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
+pre-commit = "^1.18"
 
 [tool.poetry.scripts]
-load_tester = 'navis_loader.cli:main'
+naviload = 'navis_loader.cli:main'
+
+[tool.black]
+target_version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.idea
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
 
 [build-system]
 requires = ["poetry>=0.12"]
