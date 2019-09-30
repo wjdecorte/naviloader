@@ -1,5 +1,7 @@
 """ Navis Loader CLI """
+import sys
 import random
+import logging
 
 import click
 
@@ -7,9 +9,18 @@ from navis_loader.loader import process_files
 
 
 @click.group()
-def main():
+@click.option("--debug/--no-debug", help="Debug logging")
+def main(debug):
     """ main """
-    pass
+    if debug:
+        log_format = "%(asctime)s:%(levelname)s:%(module)s:%(message)s"
+    else:
+        log_format = "%(message)s"
+    logging.basicConfig(
+        level=logging.INFO if not debug else logging.DEBUG,
+        format=log_format,
+        stream=sys.stdout,
+    )
 
 
 @main.command()
@@ -25,12 +36,16 @@ def sample(data_directory, file_count, file_prefix, record_count, make_duplicate
     """ Create one or more sample files """
     from navis_loader.create_sample_data import create_file
 
+    logging.info("Creating sample data files...")
     for i in range(file_count):
+        logging.debug(f"Creating file #{str(i)}")
         if record_count == 0:
             record_count = random.randint(1, 1000)
+        logging.debug(f"Record Count={record_count}")
         create_file(
             record_count, data_directory, f"{file_prefix}_{str(i)}", make_duplicates
         )
+    logging.info(f"Done - {file_count} file(s) created")
 
 
 @main.command()
@@ -55,6 +70,8 @@ def loader(
     """ Load data files """
     if daemon:
         # todo: add continuous loop with interrupt/signal watch
-        pass
+        logging.info("daemon mode not operational yet.")
     else:
+        logging.info("Processing Source Files")
         process_files(source_data_directory, target_data_directory, file_extension)
+    logging.info("Files successfully processed")

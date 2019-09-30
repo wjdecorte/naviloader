@@ -2,6 +2,7 @@ import random
 import string
 import json
 import os
+import logging
 from typing import List, Dict
 
 from dateutil.relativedelta import relativedelta
@@ -21,6 +22,7 @@ def create_duplicates(record_list: List[Dict]) -> List[Dict]:
     :return: list
     """
     duplicate_count = random.randint(1, len(record_list))
+    logging.debug(f"Duplicate Count={duplicate_count}")
     new_record_list = record_list.copy()
     for i in range(duplicate_count):
         record_id = random.randint(0, len(record_list) - 1)
@@ -55,5 +57,6 @@ def create_file(record_count: int, data_dir: str, filename: str, make_duplicates
     with open(os.path.join(data_dir, f"{filename}{ext}"), "w") as outfile:
         record_list = [create_record() for i in range(record_count)]
         if make_duplicates:
+            logging.debug("Making duplicates")
             record_list = create_duplicates(record_list)
         json.dump(dict(records=record_list), outfile)
