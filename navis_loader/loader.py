@@ -114,7 +114,9 @@ def process_files(source_data_dir: str, target_data_dir: str, file_ext: str) -> 
     # Get list of source data files
     file_list = glob.glob(os.path.join(source_data_dir, f"*.{file_ext}"))
     logging.debug(f"File List={','.join(file_list)}")
-
+    if not file_list:
+        logging.info("No source files found to process")
+        return 0
     temp_dir = mkdtemp()
     logging.debug(f"Temp Dir={temp_dir}")
     list_of_dates = []

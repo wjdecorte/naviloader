@@ -22,11 +22,9 @@ def test_create_duplicates():
     """ Test duplication of records """
 
     def getuid(record: dict) -> tuple:
-        return (record["id"], record["ts"])
+        return record["id"], record["ts"]
 
-    record_list = []
-    record_list.append(create_record())
-    record_list.append(create_record())
+    record_list = [create_record(), create_record()]
     dupe_list = create_duplicates(record_list)
     assert len(dupe_list) > len(record_list)
     assert (getuid(dupe_list[0]) == getuid(dupe_list[2])) or (
@@ -52,4 +50,5 @@ def test_create_file():
         sample_file_name = os.path.join(data_dir, filename + ".json")
         assert os.path.isfile(sample_file_name)
         sample_file = open(sample_file_name, "r")
+        # test the file can be successfully read
         records = json.load(sample_file)
