@@ -3,7 +3,7 @@ import os
 import json
 import glob
 import shutil
-from typing import List, Dict, Tuple
+from typing import List, Tuple
 from collections import defaultdict
 from tempfile import mkdtemp
 
@@ -24,7 +24,7 @@ def write_partitioned_temp_files(
     file_path: str, temporary_dir: str
 ) -> Tuple[List, List]:
     """
-    Load the records into memory and write to temp file per date
+    Load the records into memory and partition the data and write to temp files
     :param file_path:
     :param temporary_dir:
     :return: List of file names for partitioned data files
@@ -40,6 +40,7 @@ def write_partitioned_temp_files(
     date_list = []
     for k, v in records.items():
         df = pd.DataFrame(v)
+        df.drop_duplicates(subset=["id", "ts"], keep="last", inplace=True)
         temp_file = os.path.join(temporary_dir, f"{file_prefix}_{k}.csv")
         df.to_csv(temp_file, index=False)
         temp_files.append(temp_file)
