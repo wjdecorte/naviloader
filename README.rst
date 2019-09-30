@@ -20,14 +20,30 @@ Features
 Installation
 ------------
 
-Install naviload by running::
+Install naviload CLI by running::
 
     $ cd /path/to/project/
     $ python3 -m venv test_navis_loader
     $ cd test_navis_loader
     $ source bin/activate
+    $ pip install --upgrade pip
     $ pip install git+https://github.com/wjdecorte/navis_loader.git@master
 
+
+Examples
+----------
+
+CLI command examples::
+
+    $ naviload --help   # display the command help
+
+    $ naviload <sub-command> --help   # help for a specific sub-command
+
+    # Create 4 sample files that start with the prefix sample_data
+    $ naviload sample /path/to/source/data --file-count=4 --file-prefix=sample_data
+
+    # Load the sample files
+    $ naviload loader /path/to/source/data /path/to/target/data
 
 Contribute
 ----------
@@ -38,8 +54,7 @@ Contribute
 Support
 -------
 
-If you are having issues, please let us know.
-Contact the author at `jdecorte@decorteindustries.com <mailto:jdecorte@decorteindustries.com>`_.
+If you are having questions, please contact the author at `jdecorte@decorteindustries.com <mailto:jdecorte@decorteindustries.com>`_.
 
 License
 -------

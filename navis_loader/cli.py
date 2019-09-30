@@ -74,4 +74,4 @@ def loader(
     else:
         logging.info("Processing Source Files")
         process_files(source_data_directory, target_data_directory, file_extension)
-    logging.info("Files successfully processed")
+        logging.info("Files successfully processed")
