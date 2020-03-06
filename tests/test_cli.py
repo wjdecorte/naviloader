@@ -1,11 +1,11 @@
-""" Test the Navis Loader CLI """
+""" Test the NaviLoader CLI """
 import os
 import glob
 
-from navis_loader import __version__
+from naviloader import __version__
 from click.testing import CliRunner
-from navis_loader.cli import main
-from navis_loader.create_sample_data import create_file
+from naviloader.cli import main
+from naviloader.create_sample_data import create_file
 
 
 def test_version():

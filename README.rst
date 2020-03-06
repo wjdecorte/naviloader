@@ -1,7 +1,7 @@
-Navis Loader
+NaviLoader
 ============
 
-Navis Loader will process all source files in JSON format saved in the
+NaviLoader will process all source files in JSON format saved in the
 source data directory and save without duplicates in the target data directory.
 
 Look how easy it is to use::
@@ -23,11 +23,11 @@ Installation
 Install naviload CLI by running::
 
     $ cd /path/to/project/
-    $ python3 -m venv test_navis_loader
-    $ cd test_navis_loader
+    $ python3 -m venv naviloader
+    $ cd naviloader
     $ source bin/activate
     $ pip install --upgrade pip
-    $ pip install git+https://github.com/wjdecorte/navis_loader.git@master
+    $ pip install git+https://github.com/wjdecorte/naviloader.git@master
 
 
 Examples
@@ -48,8 +48,8 @@ CLI command examples::
 Contribute
 ----------
 
-- Issue Tracker: `<https://github.com/wjdecorte/navis_loader/issues>`_
-- Source Code: `<https://github.com/wjdecorte/navis_loader>`_
+- Issue Tracker: `<https://github.com/wjdecorte/naviloader/issues>`_
+- Source Code: `<https://github.com/wjdecorte/naviloader>`_
 
 Support
 -------

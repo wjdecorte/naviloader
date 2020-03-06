@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-from navis_loader.loader import (
+from naviloader.loader import (
     get_partition_value,
     load_source_data,
     combine_files,

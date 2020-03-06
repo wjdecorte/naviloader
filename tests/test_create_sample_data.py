@@ -3,7 +3,7 @@ import tempfile
 import os
 import json
 
-from navis_loader.create_sample_data import (
+from naviloader.create_sample_data import (
     create_file,
     create_record,
     create_fake_data,

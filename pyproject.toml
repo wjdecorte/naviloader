@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "navis_loader"
+name = "naviloader"
 version = "0.1.0"
-description = "Navis ETL Loader "
+description = "Data Loader"
 authors = ["Jason DeCorte <jdecorte@decorteindustries.com>"]
 
 [tool.poetry.dependencies]
@@ -17,7 +17,7 @@ pytest = "^3.0"
 pre-commit = "^1.18"
 
 [tool.poetry.scripts]
-naviload = 'navis_loader.cli:main'
+naviload = 'naviloader.cli:main'
 
 [tool.black]
 target_version = ['py37']

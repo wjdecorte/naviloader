@@ -1,11 +1,11 @@
-""" Navis Loader CLI """
+""" NaviLoader CLI """
 import sys
 import random
 import logging
 
 import click
 
-from navis_loader.loader import process_files
+from naviloader.loader import process_files
 
 
 @click.group()
@@ -34,7 +34,7 @@ def main(debug):
 @click.option("--make-duplicates", is_flag=True, help="T/F: add duplicate records")
 def sample(data_directory, file_count, file_prefix, record_count, make_duplicates):
     """ Create one or more sample files """
-    from navis_loader.create_sample_data import create_file
+    from naviloader.create_sample_data import create_file
 
     logging.info("Creating sample data files...")
     for i in range(file_count):
